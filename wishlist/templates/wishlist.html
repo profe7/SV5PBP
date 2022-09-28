@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<nav class="navbar" style="background-color: #A00106;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Muhammad Fahreza Azka Arafat</a>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        </ul>
+        <button><a href="{% url 'wishlist:logout' %}">Logout</a></button>
+    </div>
+  </nav>
 <h5>Nama: </h5>
 <b>{{nama}}</b>
 
@@ -19,5 +27,5 @@
     </tr>
 {% endfor %}
 </table>
-
+<h5>Sesi terakhir login: {{ last_login }}</h5>
 {% endblock content %}
