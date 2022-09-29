@@ -1,31 +1,36 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<style type="text/css">
+  body { background: navy !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+</style>
 <nav class="navbar" style="background-color: #A00106;">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Muhammad Fahreza Azka Arafat</a>
+      <a class="navbar-brand" href="#" style="color:whitesmoke;">Muhammad Fahreza Azka Arafat</a>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         </ul>
         <button><a href="{% url 'wishlist:logout' %}">Logout</a></button>
     </div>
   </nav>
-<h5>Nama: </h5>
-<b>{{nama}}</b>
+<center>
+<h5 style="color:whitesmoke;">Nama: </h5>
+<b style="color:whitesmoke;">{{nama}}</b>
 
 <table>
     <tr>
-    <th>Nama Barang</th>
-    <th>Harga Barang</th>
-    <th>Deskripsi</th>
+    <th style="color:whitesmoke;">Nama Barang</th>
+    <th style="color:whitesmoke;">Harga Barang</th>
+    <th style="color:whitesmoke;">Deskripsi</th>
     </tr>
     {% comment %} Tambahkan data di bawah baris ini {% endcomment %}
     {% for barang in list_barang %}
     <tr>
-        <th>{{barang.nama_barang}}</th>
-        <th>{{barang.harga_barang}}</th>
-        <th>{{barang.deskripsi}}</th>
+        <th style="color:whitesmoke;">{{barang.nama_barang}}</th>
+        <th style="color:whitesmoke;">{{barang.harga_barang}}</th>
+        <th style="color:whitesmoke;">{{barang.deskripsi}}</th>
     </tr>
 {% endfor %}
 </table>
-<h5>Sesi terakhir login: {{ last_login }}</h5>
+<h5 style="color:whitesmoke;">Sesi terakhir login: {{ last_login }}</h5>
 {% endblock content %}
+/center>
