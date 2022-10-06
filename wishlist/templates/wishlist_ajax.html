@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+<meta charset = "utf-8">
+{% block content %}
+<style type="text/css">
+  body { background: navy !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+</style>
+<nav class="navbar" style="background-color: #A00106;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#" style="color:whitesmoke;">Muhammad Fahreza Azka Arafat</a>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        </ul>
+        <button><a href="{% url 'wishlist:logout' %}">Logout</a></button>
+    </div>
+  </nav>
+<center>
+<h5 style="color:whitesmoke;">Nama: </h5>
+<b style="color:whitesmoke;">{{nama}}</b>
+
+
+<body>
+  <div>
+    <table class="table table-hover">
+      <thead class="table-dark">
+        <th>Nama Barang</th>
+        <th>Harga Barang</th>
+        <th>Deskripsi</th>
+      </thead>
+      {% comment %} Tambahkan data di bawah baris ini {% endcomment %}
+      <tbody id="table-body" style="color: whitesmoke;"></tbody>
+    </table>
+  </div>
+
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+  <script>
+  $(document).ready(function () {
+    $.get("{% url 'wishlist:show_json' %}", function (data) {
+      data.map((items) =>
+        $('#table-body').append(`<tr>
+    <td>${items.fields.nama_barang}</td>
+    <td>${items.fields.harga_barang}</td>
+    <td>${items.fields.deskripsi}</td>
+  </tr>`)
+      );
+    });
+  });
+</script>
+</body>
+
+<h5 style="color:whitesmoke;">Sesi terakhir login: {{ last_login }}</h5>
+
+
+
+{% endblock content %}
+/center>
